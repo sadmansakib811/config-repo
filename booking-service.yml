@@ -1,12 +1,9 @@
-server:
-  port: 8082
-
 spring:
   datasource:
     url: jdbc:h2:mem:bookingdb
     driverClassName: org.h2.Driver
     username: sa
-    password:
+    password: password
   h2:
     console:
       enabled: true
@@ -14,19 +11,7 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-
-resilience4j:
-  circuitbreaker:
-    instances:
-      bookingService:
-        registerHealthIndicator: true
-        slidingWindowSize: 100
-        failureRateThreshold: 50
-        waitDurationInOpenState: 10000
-        permittedNumberOfCallsInHalfOpenState: 10
-        slidingWindowType: COUNT_BASED
+server:
+  port: 8083
